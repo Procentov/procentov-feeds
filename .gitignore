@@ -1,0 +1,7 @@
+﻿.venv/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+diag*.ps1
+setup_repo.ps1
