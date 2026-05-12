@@ -1,10 +1,45 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-05-12T11:26:14.246313+00:00",
+  "updated_at": "2026-05-12T12:05:53.645461+00:00",
   "namespaces": {
-    "atributy": {},
-    "hodnoty": {},
-    "kategorie": {},
+    "atributy": {
+      "Kod_producenta": "Kód výrobce",
+      "Kolor": "Barva",
+      "Materiał": "Materiál",
+      "Producent": "Výrobce"
+    },
+    "hodnoty": {
+      "EKO-SKÓRA": "Ekokůže",
+      "MIKROFAZA": "Mikrovlákno",
+      "VELVET": "Samet"
+    },
+    "kategorie": {
+      "FOTEL MILO": "Křeslo Milo",
+      "FOTEL MILO ECO SKÓRA , SKAJ": "Křeslo Milo ekokůže, koženka",
+      "FOTEL MILO MIKROFAZA": "Křeslo Milo mikrovlákno",
+      "FOTEL MILO NOGI 15 BIAŁE": "Křeslo Milo nohy 15 cm bílé",
+      "FOTEL MILO NOGI 15 BUK": "Křeslo Milo nohy 15 cm buk",
+      "FOTEL MILO NOGI 15 VENGE": "Křeslo Milo nohy 15 cm wenge",
+      "FOTEL MILO NOGI 20 BIAŁE": "Křeslo Milo nohy 20 cm bílé",
+      "FOTEL MILO NOGI 20 BUK": "Křeslo Milo nohy 20 cm buk",
+      "FOTEL MILO NOGI 20 VENGE": "Křeslo Milo nohy 20 cm wenge",
+      "FOTEL MILO NOGI BIAŁE": "Křeslo Milo nohy bílé",
+      "FOTEL MILO NOGI BUK": "Křeslo Milo nohy buk",
+      "FOTEL MILO NOGI CHROM": "Křeslo Milo nohy chrom",
+      "FOTEL MILO NOGI VENGE": "Křeslo Milo nohy wenge",
+      "FOTELE": "Křesla",
+      "Fotel Milo tapicerowany tkaniną velvet – 19 kolorów": "Křeslo Milo čalouněné látkou samet – 19 barev",
+      "SOFA MILO": "Pohovka Milo",
+      "SOFA MILO NOGA 20 BIAŁA": "Pohovka Milo noha 20 cm bílá",
+      "SOFA MILO NOGA 20 VENGE": "Pohovka Milo noha 20 cm wenge",
+      "SOFA MILO NOGI 15 BIAŁE": "Pohovka Milo nohy 15 cm bílé",
+      "SOFA MILO NOGI 15 BUK": "Pohovka Milo nohy 15 cm buk",
+      "SOFA MILO NOGI 15 VENGE": "Pohovka Milo nohy 15 cm wenge",
+      "SOFA MILO NOGI 20 BUK": "Pohovka Milo nohy 20 cm buk",
+      "SOFA MILO NOGI CHROM": "Pohovka Milo nohy chrom",
+      "SOFA MILO VELVET": "Pohovka Milo samet",
+      "SOFY": "Pohovky"
+    },
     "barvy_kody": {
       "BL06": {
         "pl": null,
@@ -486,6 +521,166 @@
     "TRIP 2": {
       "_source": "seed_utuli",
       "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+    },
+    "Kod_producenta": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "Kolor": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "Materiał": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "Producent": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "EKO-SKÓRA": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "MIKROFAZA": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "VELVET": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO ECO SKÓRA , SKAJ": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO MIKROFAZA": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO NOGI 15 BIAŁE": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO NOGI 15 BUK": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO NOGI 15 VENGE": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO NOGI 20 BIAŁE": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO NOGI 20 BUK": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO NOGI 20 VENGE": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO NOGI BIAŁE": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO NOGI BUK": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO NOGI CHROM": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTEL MILO NOGI VENGE": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "FOTELE": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "Fotel Milo tapicerowany tkaniną velvet – 19 kolorów": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "SOFA MILO": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "SOFA MILO NOGA 20 BIAŁA": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "SOFA MILO NOGA 20 VENGE": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "SOFA MILO NOGI 15 BIAŁE": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "SOFA MILO NOGI 15 BUK": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "SOFA MILO NOGI 15 VENGE": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "SOFA MILO NOGI 20 BUK": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "SOFA MILO NOGI CHROM": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "SOFA MILO VELVET": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "SOFY": {
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-12T12:05:53.645461+00:00"
     }
   }
 }

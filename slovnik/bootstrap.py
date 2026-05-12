@@ -339,8 +339,8 @@ def cmd_merge(args) -> None:
        - Pokud není v target -> přidá + audit
        - Pokud je a liší se -> přepíše + print UPDATE
        - Pokud je stejný -> skip
-    3. Validuje proti schema
-    4. Zapíše target na disk
+    3. Zapíše target NA DISK (před validací - aby silent fail printu nezničil zápis)
+    4. Validuje proti schema (poté může sys.exit(1) v případě chyby)
     """
     print(f"Merguji:")
     print(f"  Review: {args.review}")
@@ -404,19 +404,21 @@ def cmd_merge(args) -> None:
     target['updated_at'] = timestamp
 
     print(f"\nSouhrn:")
-    print(f"  Přidáno: {added}")
-    print(f"  Aktualizováno: {updated}")
-    print(f"  Přeskočeno (shodné): {skipped}")
+    print(f"  Pridano: {added}")
+    print(f"  Aktualizovano: {updated}")
+    print(f"  Preskoceno (shodne): {skipped}")
 
-    # Validuj proti schema
+    # POZOR: ulozit PRED validaci, aby silent fail printu nezablokoval zapis.
+    # Validace muze stale udelat sys.exit(1), ale soubor uz bude na disku
+    # a uzivatel vidi v stdoutu, ze se neco ulozilo.
+    save_json(target, args.target)
+    print(f"Ulozeno do: {args.target}")
+
+    # Validuj proti schema (az ted, kdyz je soubor na disku)
     schema_path = Path(__file__).parent / 'slovnik_schema.json'
     print(f"\nValiduji proti: {schema_path}")
     validate_schema(target, str(schema_path))
-    print("✓ Validace úspěšná")
-
-    # Ulož target
-    save_json(target, args.target)
-    print(f"Uloženo do: {args.target}")
+    print("[OK] Validace uspesna")
 
 
 # ============================================================================
@@ -432,8 +434,8 @@ def cmd_seed(args) -> None:
        - Pokud v target neexistuje -> přidá + audit "_source": "seed_utuli"
        - Pokud existuje a liší se -> log WARN + ZACHOVÁ stávající target
        - Pokud shodné -> skip
-    3. Validuje proti schema
-    4. Zapíše target
+    3. Zapíše target NA DISK (před validací - aby silent fail printu nezničil zápis)
+    4. Validuje proti schema
     """
     print(f"Aplikuji seed:")
     print(f"  Source: {args.source}")
@@ -465,7 +467,7 @@ def cmd_seed(args) -> None:
 
         # Je v target a liší se -> WARN, ZACHOVEJ target (seed nepřepisuje revizi)
         elif target_barvy[kod] != seed_value:
-            print(f"WARN: SEED-CONFLICT: {kod} (zachována target hodnota)")
+            print(f"WARN: SEED-CONFLICT: {kod} (zachovana target hodnota)")
             conflicts += 1
 
         # Je stejný -> skip
@@ -476,19 +478,19 @@ def cmd_seed(args) -> None:
     target['updated_at'] = timestamp
 
     print(f"\nSouhrn:")
-    print(f"  Přidáno ze seedu: {added}")
-    print(f"  Přeskočeno (shodné): {skipped}")
-    print(f"  Konfliktů (seed != target): {conflicts}")
+    print(f"  Pridano ze seedu: {added}")
+    print(f"  Preskoceno (shodne): {skipped}")
+    print(f"  Konfliktu (seed != target): {conflicts}")
+
+    # Ulozit PRED validaci (viz cmd_merge dokumentace)
+    save_json(target, args.target)
+    print(f"Ulozeno do: {args.target}")
 
     # Validuj proti schema
     schema_path = Path(__file__).parent / 'slovnik_schema.json'
     print(f"\nValiduji proti: {schema_path}")
     validate_schema(target, str(schema_path))
-    print("✓ Validace úspěšná")
-
-    # Ulož target
-    save_json(target, args.target)
-    print(f"Uloženo do: {args.target}")
+    print("[OK] Validace uspesna")
 
 
 # ============================================================================
@@ -497,6 +499,15 @@ def cmd_seed(args) -> None:
 
 def main():
     """Hlavní entry point s argparse subparsers."""
+    # Pokud bezime na Windows v cp1250 prostredi, prepnout stdout/stderr
+    # na UTF-8. Bez tohoto print s non-ASCII znaky (cestina, sipky) pada.
+    if sys.platform == 'win32':
+        try:
+            sys.stdout.reconfigure(encoding='utf-8')
+            sys.stderr.reconfigure(encoding='utf-8')
+        except Exception:
+            pass
+
     parser = argparse.ArgumentParser(
         description='Slovník PL->CZ bootstrap toolkit',
         formatter_class=argparse.RawDescriptionHelpFormatter
