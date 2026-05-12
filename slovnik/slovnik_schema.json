@@ -16,7 +16,7 @@
     },
     "namespaces": {
       "type": "object",
-      "required": ["atributy", "hodnoty", "kategorie"],
+      "required": ["atributy", "hodnoty", "kategorie", "barvy_kody"],
       "additionalProperties": false,
       "properties": {
         "atributy": {
@@ -40,6 +40,21 @@
           "patternProperties": {
             "^.*$": {
               "type": ["string", "null"]
+            }
+          }
+        },
+        "barvy_kody": {
+          "type": "object",
+          "patternProperties": {
+            "^.*$": {
+              "type": "object",
+              "required": ["pl", "cz", "material"],
+              "additionalProperties": false,
+              "properties": {
+                "pl": {"type": ["string", "null"]},
+                "cz": {"type": ["string", "null"]},
+                "material": {"type": ["string", "null"], "enum": ["Velvet", "Mikrofaze", "Eko-kuze", "Tkanina", null]}
+              }
             }
           }
         }
@@ -68,7 +83,7 @@
           "properties": {
             "_source": {
               "type": "string",
-              "enum": ["google", "manual", "review"]
+              "enum": ["google", "manual", "review", "seed_utuli"]
             },
             "_updated_at": {
               "type": "string",

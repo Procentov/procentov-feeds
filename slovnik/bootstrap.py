@@ -19,6 +19,26 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from polotovar.parser_atos import parse as parse_atos
 
 
+# Whitelist atributu - jen tyto sbirame do slovniku jako klice
+ATTR_WHITELIST = {
+    "Kolor",
+    "Materiał",
+    "Wymiary",
+    "Waga",
+    "Kod_producenta",
+    "Producent",
+}
+
+# Whitelist atributu, jejichz HODNOTY sbirame do namespace "hodnoty"
+# (pro generic PL->CZ slovnik typu MIKROFAZA -> Mikrovlakno)
+VALUE_SOURCE_ATTRS = {
+    "Materiał",  # MIKROFAZA, EKO-SKÓRA, VELVET, BRINGHTON 2 atd.
+}
+
+# Atribut, jehoz hodnoty jsou barevne kody -> jdou do namespace barvy_kody
+COLOR_CODE_ATTR = "Kolor"
+
+
 def load_json(path: str) -> dict:
     """Načte JSON soubor."""
     with open(path, 'r', encoding='utf-8') as f:
@@ -67,6 +87,33 @@ def validate_schema(data: dict, schema_path: str) -> None:
 # EXTRACT: Extrakce unikátních PL stringů z XML feedu
 # ============================================================================
 
+def is_translatable_pl_string(s: str) -> bool:
+    """Vrati True pokud string vypada jako prekladatelny PL string,
+    False pokud je to cislo, EAN, symbol kod nebo prazdny string.
+
+    Pravidla:
+    - prazdny string -> False
+    - obsahuje pouze cislice -> False (12, 250, 5903769305087)
+    - matchuje regex symbol kódu (XX-XX-XX-X) -> False
+    - obsahuje aspon jedno písmeno -> True
+    """
+    import re
+
+    if not s or not s.strip():
+        return False
+    stripped = s.strip()
+    # Cista cisla (vc. dlouhych EAN)
+    if stripped.replace('-', '').replace('.', '').replace(',', '').isdigit():
+        return False
+    # Symbol kod typu 3-7-70-9 nebo 10-25-56-12
+    if re.fullmatch(r'\d+(-\d+)+', stripped):
+        return False
+    # Musi obsahovat aspon jedno pismeno
+    if not any(c.isalpha() for c in stripped):
+        return False
+    return True
+
+
 def cmd_extract(args) -> None:
     """Extrahuje unikátní PL stringy z XML feedu do JSON souboru.
 
@@ -94,19 +141,27 @@ def cmd_extract(args) -> None:
     atributy: Set[str] = set()
     hodnoty: Set[str] = set()
     kategorie: Set[str] = set()
+    barvy_kody: Set[str] = set()
 
     # Procházej všechny produkty a jejich varianty
     for product in products:
         for offer in product.offers:
-            # Atributy: názvy atributů
+            # Atributy: názvy atributů - POUZE z whitelistu
             for attr in offer.attributes:
-                if attr.name_pl:
+                if attr.name_pl and attr.name_pl in ATTR_WHITELIST:
                     atributy.add(attr.name_pl)
 
-                # Hodnoty: hodnoty atributů (attr.values_pl je list)
-                for value in attr.values_pl:
-                    if value:
-                        hodnoty.add(value)
+                # Hodnoty: hodnoty atributů z VALUE_SOURCE_ATTRS (s filtrem)
+                if attr.name_pl in VALUE_SOURCE_ATTRS:
+                    for value in attr.values_pl:
+                        if value and is_translatable_pl_string(value):
+                            hodnoty.add(value)
+
+                # Barevné kódy: hodnoty z COLOR_CODE_ATTR (BEZ filtru)
+                if attr.name_pl == COLOR_CODE_ATTR:
+                    for value in attr.values_pl:
+                        if value:
+                            barvy_kody.add(value)
 
             # Kategorie: JEDNOTLIVÉ SEGMENTY z cat_path_pl
             for segment in offer.cat_path_pl:
@@ -117,6 +172,7 @@ def cmd_extract(args) -> None:
     print(f"  - atributy: {len(atributy)}")
     print(f"  - hodnoty: {len(hodnoty)}")
     print(f"  - kategorie: {len(kategorie)}")
+    print(f"  - barvy_kody: {len(barvy_kody)}")
 
     # Vytvoř výstupní strukturu s null hodnotami
     output = {
@@ -125,7 +181,11 @@ def cmd_extract(args) -> None:
         "namespaces": {
             "atributy": {key: None for key in sorted(atributy)},
             "hodnoty": {key: None for key in sorted(hodnoty)},
-            "kategorie": {key: None for key in sorted(kategorie)}
+            "kategorie": {key: None for key in sorted(kategorie)},
+            "barvy_kody": {
+                key: {"pl": None, "cz": None, "material": None}
+                for key in sorted(barvy_kody)
+            }
         },
         "per_kategorii_override": {},
         "audit": {}
@@ -221,10 +281,12 @@ def cmd_translate(args) -> None:
         return translations
 
     # Procházej všechny namespaces a překládej null hodnoty
+    # POZOR: barvy_kody se NEpřekládají - hodnoty pocházejí ze seedu nebo Mirkovy revize
     timestamp = get_iso_timestamp()
     total_translated = 0
 
-    for namespace_name, namespace_dict in data['namespaces'].items():
+    for namespace_name in ['atributy', 'hodnoty', 'kategorie']:
+        namespace_dict = data['namespaces'].get(namespace_name, {})
         # Najdi všechny klíče s null hodnotou
         to_translate = [key for key, value in namespace_dict.items() if value is None]
 
@@ -295,18 +357,23 @@ def cmd_merge(args) -> None:
     timestamp = get_iso_timestamp()
 
     # Procházej všechny namespaces v review
-    for namespace_name in ['atributy', 'hodnoty', 'kategorie']:
+    for namespace_name in ['atributy', 'hodnoty', 'kategorie', 'barvy_kody']:
         review_ns = review['namespaces'].get(namespace_name, {})
         target_ns = target['namespaces'].get(namespace_name, {})
 
-        for pl_key, cs_value in review_ns.items():
-            # Skip null hodnoty v review (ještě nepřeložené)
-            if cs_value is None:
-                continue
+        for pl_key, value in review_ns.items():
+            # Pro barvy_kody: skip pokud vsechny 3 fieldy (pl, cz, material) jsou null
+            if namespace_name == 'barvy_kody':
+                if not isinstance(value, dict) or all(v is None for v in value.values()):
+                    continue
+            else:
+                # Pro string namespaces: skip null
+                if value is None:
+                    continue
 
             # Není v target -> přidej
             if pl_key not in target_ns:
-                target_ns[pl_key] = cs_value
+                target_ns[pl_key] = value
                 target['audit'][pl_key] = {
                     "_source": "review",
                     "_reviewed_by": "mirek",
@@ -315,9 +382,9 @@ def cmd_merge(args) -> None:
                 added += 1
 
             # Je v target a liší se -> update
-            elif target_ns[pl_key] != cs_value:
+            elif target_ns[pl_key] != value:
                 old_value = target_ns[pl_key]
-                target_ns[pl_key] = cs_value
+                target_ns[pl_key] = value
 
                 # Update audit
                 target['audit'][pl_key] = {
@@ -326,7 +393,7 @@ def cmd_merge(args) -> None:
                     "_updated_at": timestamp
                 }
 
-                print(f"UPDATE: {pl_key} | {old_value} -> {cs_value}")
+                print(f"UPDATE: {pl_key} | {old_value} -> {value}")
                 updated += 1
 
             # Je stejný -> skip
@@ -340,6 +407,78 @@ def cmd_merge(args) -> None:
     print(f"  Přidáno: {added}")
     print(f"  Aktualizováno: {updated}")
     print(f"  Přeskočeno (shodné): {skipped}")
+
+    # Validuj proti schema
+    schema_path = Path(__file__).parent / 'slovnik_schema.json'
+    print(f"\nValiduji proti: {schema_path}")
+    validate_schema(target, str(schema_path))
+    print("✓ Validace úspěšná")
+
+    # Ulož target
+    save_json(target, args.target)
+    print(f"Uloženo do: {args.target}")
+
+
+# ============================================================================
+# SEED: Merge seedu (dekódovací tabulky) do slovníku
+# ============================================================================
+
+def cmd_seed(args) -> None:
+    """Mergne seed (dekódovací tabulku) do cílového slovníku.
+
+    Logika:
+    1. Načte source (seed JSON) a target (slovník)
+    2. Pro každý záznam v source["barvy_kody"]:
+       - Pokud v target neexistuje -> přidá + audit "_source": "seed_utuli"
+       - Pokud existuje a liší se -> log WARN + ZACHOVÁ stávající target
+       - Pokud shodné -> skip
+    3. Validuje proti schema
+    4. Zapíše target
+    """
+    print(f"Aplikuji seed:")
+    print(f"  Source: {args.source}")
+    print(f"  Target: {args.target}")
+
+    # Načti soubory
+    source = load_json(args.source)
+    target = load_json(args.target)
+
+    # Počítadla změn
+    added = 0
+    skipped = 0
+    conflicts = 0
+    timestamp = get_iso_timestamp()
+
+    # Procházej barvy_kody ze seedu
+    source_barvy = source.get('barvy_kody', {})
+    target_barvy = target['namespaces'].get('barvy_kody', {})
+
+    for kod, seed_value in source_barvy.items():
+        # Není v target -> přidej
+        if kod not in target_barvy:
+            target_barvy[kod] = seed_value
+            target['audit'][kod] = {
+                "_source": "seed_utuli",
+                "_updated_at": timestamp
+            }
+            added += 1
+
+        # Je v target a liší se -> WARN, ZACHOVEJ target (seed nepřepisuje revizi)
+        elif target_barvy[kod] != seed_value:
+            print(f"WARN: SEED-CONFLICT: {kod} (zachována target hodnota)")
+            conflicts += 1
+
+        # Je stejný -> skip
+        else:
+            skipped += 1
+
+    # Aktualizuj timestamp v targetu
+    target['updated_at'] = timestamp
+
+    print(f"\nSouhrn:")
+    print(f"  Přidáno ze seedu: {added}")
+    print(f"  Přeskočeno (shodné): {skipped}")
+    print(f"  Konfliktů (seed != target): {conflicts}")
 
     # Validuj proti schema
     schema_path = Path(__file__).parent / 'slovnik_schema.json'
@@ -420,6 +559,23 @@ def main():
         help='Cílový slovník JSON (slovnik.json)'
     )
     parser_merge.set_defaults(func=cmd_merge)
+
+    # SEED subcommand
+    parser_seed = subparsers.add_parser(
+        'seed',
+        help='Mergne seed (dekódovací tabulku) do slovníku'
+    )
+    parser_seed.add_argument(
+        '--source',
+        required=True,
+        help='Seed JSON soubor (barvy_kody)'
+    )
+    parser_seed.add_argument(
+        '--target',
+        required=True,
+        help='Cílový slovník JSON (slovnik.json)'
+    )
+    parser_seed.set_defaults(func=cmd_seed)
 
     # Parse args a zavolej příslušnou funkci
     args = parser.parse_args()

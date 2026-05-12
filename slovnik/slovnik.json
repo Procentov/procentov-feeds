@@ -4,7 +4,8 @@
   "namespaces": {
     "atributy": {},
     "hodnoty": {},
-    "kategorie": {}
+    "kategorie": {},
+    "barvy_kody": {}
   },
   "per_kategorii_override": {},
   "audit": {}
