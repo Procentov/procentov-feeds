@@ -1,0 +1,26 @@
+supplier: atos
+source_url: http://hurtmeble.eu/feeds/oferta_hurtowa_PL_PLN.xml
+variant_attribute_whitelist:
+  - Kolor
+  - "Kolor Płyty Laminowanej"
+  - Materiał
+  - Tkanina
+  - material_composition
+parameter_attribute_whitelist:
+  - "Waga [kg]"
+  - Kod_producenta
+  - Producent
+  - EAN
+  - "Wysokość oparcia [cm]"
+  - "Wysokość do siedziska [cm]"
+  - "Wysokość do podłokietnika [cm]"
+  - "Wysokość całkowita [cm]"
+  - "Głębokość siedziska [cm]"
+  - "Głębokość całkowita [cm]"
+  - "Szerokość siedziska [cm]"
+  - "Szerokość całkowita [cm]"
+  - "Maksymalna waga obciążenia [kg]"
+ean_extraction:
+  source: url
+  regex: '-{1,2}(\d{13})\.html'
+  fallback: null

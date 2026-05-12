@@ -5,3 +5,10 @@ __pycache__/
 Thumbs.db
 diag*.ps1
 setup_repo.ps1
+
+# Throwaway exploratory skripty
+explore_*.py
+benchmark_*.py
+tree_*.py
+check_*.py
+run_*.ps1
