@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-05-12T00:00:00Z",
+  "namespaces": {
+    "atributy": {},
+    "hodnoty": {},
+    "kategorie": {}
+  },
+  "per_kategorii_override": {},
+  "audit": {}
+}

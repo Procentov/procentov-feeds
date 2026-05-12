@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Slovnik PL->CZ",
+  "description": "Schema pro překladový slovník polština -> čeština",
+  "type": "object",
+  "required": ["schema_version", "updated_at", "namespaces", "per_kategorii_override", "audit"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "namespaces": {
+      "type": "object",
+      "required": ["atributy", "hodnoty", "kategorie"],
+      "additionalProperties": false,
+      "properties": {
+        "atributy": {
+          "type": "object",
+          "patternProperties": {
+            "^.*$": {
+              "type": ["string", "null"]
+            }
+          }
+        },
+        "hodnoty": {
+          "type": "object",
+          "patternProperties": {
+            "^.*$": {
+              "type": ["string", "null"]
+            }
+          }
+        },
+        "kategorie": {
+          "type": "object",
+          "patternProperties": {
+            "^.*$": {
+              "type": ["string", "null"]
+            }
+          }
+        }
+      }
+    },
+    "per_kategorii_override": {
+      "type": "object",
+      "patternProperties": {
+        "^.*$": {
+          "type": "object",
+          "patternProperties": {
+            "^.*$": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "patternProperties": {
+        "^.*$": {
+          "type": "object",
+          "required": ["_source", "_updated_at"],
+          "additionalProperties": false,
+          "properties": {
+            "_source": {
+              "type": "string",
+              "enum": ["google", "manual", "review"]
+            },
+            "_updated_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "_reviewed_by": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
