@@ -158,7 +158,7 @@ Akceptační kritéria mají dvě úrovně: **MVP** (dokončení této fáze) a 
 | Úroveň | Kritérium | Měření |
 |---|---|---|
 | MIN | Polotovar se generuje z ATOS feedu automaticky | Cron běží, výstup existuje, hash se mění při změně vstupu |
-| MIN | 348 variant Milo v polotovaru | `count(variants) == 348` |
+| MIN | 482 variant Milo v polotovaru | `count(variants) == 482` |
 | MIN | Všechny ceny v CZK, žádná v PLN | Schema validace odmítne mix měn |
 | MIN | Žádný produkt s cenou 0 nebo null | Validační kontrakt blokuje |
 | MIN | Sochař Shopyon vyrobí XML, který splňuje Igorova akceptační kritéria | Shopyon importér vrátí 0 chyb |
@@ -622,7 +622,7 @@ Pozn.: Discovery 1A puvodne pocitalo s "10 master + 348 variant" — to byl odha
 | BLOCK-5 | Každý produkt má alespoň 1 variantu | `exit 1` |
 | BLOCK-6 | Každý produkt má `image_link` *(neprázdný string)* | `exit 1` |
 | BLOCK-7 | Žádné duplicitní `id` ani `item_group_id` napříč produkty | `exit 1` |
-| BLOCK-8 | `count(variants) == 348` pro kategorii Milo *(MVP MIN bod 2)* | `exit 1` |
+| BLOCK-8 | `count(variants) == 482` pro kategorii Milo *(MVP MIN bod 2)* | `exit 1` |
 | BLOCK-9 | Žádné polské texty v `title_cz`, `description_cz`, `category_path_cz`, `attrs_cz` *(detekce: polské diakritiky `ą`, `ę`, `ł`, `ś`, `ż`, `ź`)* | `exit 1` |
 
 **Warning pravidla** *(rozhodnutí R6: OPT pole = soft warning)*:
@@ -986,6 +986,11 @@ Vendoři orchestrátoru (2 kola, 5 vendorů) označili tyto rizika. Sekce B je �
 ---
 
 ## Changelog
+
+**Rev. 3 (2026-05-12)** — M1.3: oprava 348→482 variant Milo (empirie z M1.1 parseru):
+- A.7.1 MIN bod 2: "348 variant" → "482 variant" (empirická validace z ATOS XML)
+- B.3.4 BLOCK-8: `count(variants) == 348` → `count(variants) == 482`
+- Důvod: původní odhad 348 byl z Sprint 1 Mergado experimentu, reálná hodnota z parseru ATOS XML je 482 variant pro kategorii Milo
 
 **Rev. 2 (2026-05-11)** — Korekce po zpřesnění výchozího stavu od Mirka:
 - A.1 Manifest: cíl = skokové zvýšení kvality+kvantity, ne modernizace existující pipeline

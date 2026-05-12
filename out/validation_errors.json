@@ -1,0 +1,197 @@
+{
+  "timestamp": "2026-05-12T13:29:06.799658Z",
+  "verdict": "BLOCKED",
+  "blocking_errors": [
+    {
+      "rule": "BLOCK-9",
+      "product_id": "FOTEL MILO",
+      "field": "description_cz",
+      "value": "<p><strong><span style=\"color:#000000;\"><span styl",
+      "detail": "Polske diakritiky detekovany v description_cz"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "FOTEL MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Kód výrobce",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "FOTEL MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Wysokość oparcia [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "FOTEL MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Wysokość do siedziska [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "FOTEL MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Wysokość do podłokietnika [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "FOTEL MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Wysokość całkowita [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "FOTEL MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Głębokość siedziska [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "FOTEL MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Głębokość całkowita [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "FOTEL MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Szerokość siedziska [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "FOTEL MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Szerokość całkowita [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "FOTEL MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Maksymalna waga obciążenia [kg]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "SOFA MILO",
+      "field": "description_cz",
+      "value": "<p style=\"margin-bottom:0cm;\"><span style=\"font-fa",
+      "detail": "Polske diakritiky detekovany v description_cz"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "SOFA MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Kód výrobce",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "SOFA MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Wysokość do siedziska [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "SOFA MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Wysokość całkowita [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "SOFA MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Głębokość siedziska [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "SOFA MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Głębokość całkowita [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "SOFA MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Szerokość siedziska [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "SOFA MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Szerokość całkowita [cm]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    },
+    {
+      "rule": "BLOCK-9",
+      "product_id": "SOFA MILO",
+      "field": "attrs_cz.name_cz",
+      "value": "Maksymalna waga obciążenia [kg]",
+      "detail": "Polske diakritiky detekovany v attrs_cz name"
+    }
+  ],
+  "warnings": [
+    {
+      "rule": "WARN-1",
+      "product_id": "FOTEL MILO",
+      "field": "",
+      "value": "",
+      "detail": "Chybi EAN (gtin)"
+    },
+    {
+      "rule": "WARN-2",
+      "product_id": "FOTEL MILO",
+      "field": "",
+      "value": "",
+      "detail": "Chybi brand"
+    },
+    {
+      "rule": "WARN-3",
+      "product_id": "FOTEL MILO",
+      "field": "",
+      "value": "",
+      "detail": "Chybi dimensions"
+    },
+    {
+      "rule": "WARN-1",
+      "product_id": "SOFA MILO",
+      "field": "",
+      "value": "",
+      "detail": "Chybi EAN (gtin)"
+    },
+    {
+      "rule": "WARN-2",
+      "product_id": "SOFA MILO",
+      "field": "",
+      "value": "",
+      "detail": "Chybi brand"
+    },
+    {
+      "rule": "WARN-3",
+      "product_id": "SOFA MILO",
+      "field": "",
+      "value": "",
+      "detail": "Chybi dimensions"
+    },
+    {
+      "rule": "WARN-5",
+      "product_id": "",
+      "field": "",
+      "value": "",
+      "detail": "Slovnik pokryti 8.2% < 95%"
+    }
+  ]
+}
