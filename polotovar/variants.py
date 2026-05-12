@@ -24,7 +24,8 @@ from polotovar.translator import (
     load_slovnik,
     translate_attribute_name,
     translate_attribute_value,
-    translate_category_segment
+    translate_category_segment,
+    translate_description
 )
 from polotovar.pricing import convert_pln_to_czk, OverrideRow
 
@@ -198,9 +199,7 @@ def merge_variants(
         # Master title, description (preloz z prvniho offeru)
         first_offer = parsed.offers[0]
         title_cz = translate_category_segment(parsed.item_group_key, slovnik)
-        description_cz = first_offer.desc_pl  # TODO: prelozit pres slovnik nebo fallback
-        # Pro MVP pouzijeme PL popis (zatim neni v slovniku)
-        # Validator BLOCK-9 to chytne pokud ma polske diakritiky
+        description_cz = translate_description(first_offer.desc_pl, title_cz)
 
         # Master ID = item_group_id = item_group_key
         product_id = parsed.item_group_key

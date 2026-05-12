@@ -92,19 +92,11 @@ def test_block_2_chybi_povinne_pole(valid_product):
 def test_block_3_cena_nula(valid_product):
     """Test BLOCK-3: cena <= 0."""
     product = valid_product.model_copy(deep=True)
-    product.price_czk = PriceCZK(value=Decimal("0"), koeficient_used=Decimal("11.115"))
-
-    polotovar = Polotovar(
-        supplier="atos",
-        category="test",
-        generated_at="2026-05-12T00:00:00Z",
-        products=[product]
-    )
 
     # Pydantic model validator uz to chytne pri vytvareni PriceCZK
     # Takze test spadne na pydantic validation error
     with pytest.raises(Exception):
-        pass  # Validation error z pydantic
+        product.price_czk = PriceCZK(value=Decimal("0"), koeficient_used=Decimal("11.115"))
 
 
 def test_block_4_mena_neni_czk(valid_product):
@@ -116,11 +108,12 @@ def test_block_4_mena_neni_czk(valid_product):
 
 def test_block_5_zadne_varianty(valid_product):
     """Test BLOCK-5: produkt bez variant."""
-    product = valid_product.model_copy()
-    product.variants = []
-
     # Pydantic model validator to odmitne (min_items=1)
     with pytest.raises(Exception):
+        product_dict = valid_product.model_dump()
+        product_dict['variants'] = []
+        product = Product(**product_dict)
+
         Polotovar(
             supplier="atos",
             category="test",

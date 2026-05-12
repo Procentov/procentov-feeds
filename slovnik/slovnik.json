@@ -1,17 +1,31 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-05-12T12:05:53.645461+00:00",
+  "updated_at": "2026-05-12T17:25:21.659829+00:00",
   "namespaces": {
     "atributy": {
       "Kod_producenta": "Kód výrobce",
       "Kolor": "Barva",
       "Materiał": "Materiál",
-      "Producent": "Výrobce"
+      "Producent": "Výrobce",
+      "Głębokość całkowita [cm]": "Hloubka [cm]",
+      "Głębokość siedziska [cm]": "Hloubka sedáku [cm]",
+      "Maksymalna waga obciążenia [kg]": "Nosnost [kg]",
+      "Szerokość całkowita [cm]": "Šířka [cm]",
+      "Szerokość siedziska [cm]": "Šířka sedáku [cm]",
+      "Waga [kg]": "Hmotnost [kg]",
+      "Wysokość całkowita [cm]": "Výška [cm]",
+      "Wysokość do podłokietnika [cm]": "Výška k područce [cm]",
+      "Wysokość do siedziska [cm]": "Výška sedáku [cm]",
+      "Wysokość oparcia [cm]": "Výška opěradla [cm]",
+      "EAN": "EAN",
+      "material_composition": "Složení materiálu"
     },
     "hodnoty": {
       "EKO-SKÓRA": "Ekokůže",
       "MIKROFAZA": "Mikrovlákno",
-      "VELVET": "Samet"
+      "VELVET": "Samet",
+      "100% PVC": "100% PVC",
+      "100% Poliester": "100% Polyester"
     },
     "kategorie": {
       "FOTEL MILO": "Křeslo Milo",
@@ -681,6 +695,76 @@
       "_source": "review",
       "_reviewed_by": "mirek",
       "_updated_at": "2026-05-12T12:05:53.645461+00:00"
+    },
+    "Głębokość całkowita [cm]": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "Głębokość siedziska [cm]": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "Maksymalna waga obciążenia [kg]": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "Szerokość całkowita [cm]": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "Szerokość siedziska [cm]": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "Waga [kg]": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "Wysokość całkowita [cm]": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "Wysokość do podłokietnika [cm]": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "Wysokość do siedziska [cm]": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "Wysokość oparcia [cm]": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "EAN": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "material_composition": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "100% PVC": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
+    },
+    "100% Poliester": {
+      "_source": "review",
+      "_reviewed_by": "claude_m13",
+      "_updated_at": "2026-05-12T17:25:21.659829+00:00"
     }
   }
 }

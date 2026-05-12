@@ -49,7 +49,7 @@ class ValidationResult(BaseModel):
 
 
 # Regex pro detekci polskych diakritik
-POLISH_DIACRITICS_REGEX = re.compile(r'[ąćęłńóśźż]', re.IGNORECASE)
+POLISH_DIACRITICS_REGEX = re.compile(r'[ąęłśżź]', re.IGNORECASE)
 
 
 def _check_polish_text(text: str) -> bool:

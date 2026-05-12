@@ -21,12 +21,25 @@ from polotovar.parser_atos import parse as parse_atos
 
 # Whitelist atributu - jen tyto sbirame do slovniku jako klice
 ATTR_WHITELIST = {
+    # Variantni / parametricke z M1.2
     "Kolor",
     "Materiał",
-    "Wymiary",
-    "Waga",
     "Kod_producenta",
     "Producent",
+    # Rozmery (rozsireni M1.3 dle empirie ATOS Milo)
+    "Wysokość oparcia [cm]",
+    "Wysokość do siedziska [cm]",
+    "Wysokość do podłokietnika [cm]",
+    "Wysokość całkowita [cm]",
+    "Głębokość siedziska [cm]",
+    "Głębokość całkowita [cm]",
+    "Szerokość siedziska [cm]",
+    "Szerokość całkowita [cm]",
+    "Waga [kg]",
+    "Maksymalna waga obciążenia [kg]",
+    # Specialni
+    "EAN",
+    "material_composition",
 }
 
 # Whitelist atributu, jejichz HODNOTY sbirame do namespace "hodnoty"
