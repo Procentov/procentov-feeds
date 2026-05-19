@@ -2,6 +2,15 @@
 
 Bere surový ATOS XML, vrací ParsedProduct objekty (polské texty zachovány).
 Translation, pricing, sloučení variant na pydantic = M1.3, MIMO SCOPE.
+
+Struktura obrázků v ATOS XML:
+  <imgs>
+    <main url="https://hurtmeble.eu/.../export.jpg"/>   ← hlavní, URL jako atribut
+    <i url="https://hurtmeble.eu/.../export.jpg"/>       ← ostatní, URL jako atribut
+  </imgs>
+
+Změny:
+  15.5.2026 — Fix: parser hledal <img> s textem, ATOS má <main>/<i> s url atributem.
 """
 
 from dataclasses import dataclass, field
@@ -118,6 +127,38 @@ def _parse_price(price_str: str | None) -> Decimal:
         return Decimal("0")
 
 
+def _parse_images(imgs_element) -> list[ImageRaw]:
+    """Parsuje obrázky z <imgs> elementu.
+
+    Skutečná struktura ATOS XML:
+      <imgs>
+        <main url="https://hurtmeble.eu/.../export.jpg"/>   ← hlavní
+        <i url="https://hurtmeble.eu/.../export.jpg"/>       ← ostatní
+      </imgs>
+
+    URL je atribut, ne textový obsah elementu.
+    """
+    if imgs_element is None:
+        return []
+
+    images = []
+
+    # Hlavní obrázek: <main url="..."/>
+    main_el = imgs_element.find('main')
+    if main_el is not None:
+        url = main_el.get('url', '').strip()
+        if url:
+            images.append(ImageRaw(url=url, is_main=True))
+
+    # Ostatní obrázky: <i url="..."/>
+    for i_el in imgs_element.findall('i'):
+        url = i_el.get('url', '').strip()
+        if url:
+            images.append(ImageRaw(url=url, is_main=False))
+
+    return images
+
+
 def _classify_attributes(attrs_element, config: dict) -> list[ParsedAttribute]:
     """Klasifikuje atributy jako variantní nebo parametrické podle whitelistu.
 
@@ -225,15 +266,9 @@ def parse(xml_path: str, category_filter: str | None = None) -> list[ParsedProdu
         # EAN extraction
         ean = _extract_ean(url, ean_regex) if url else None
 
-        # Images
-        images = []
+        # Images — <imgs><main url="..."/><i url="..."/></imgs>
         imgs_elem = elem.find('imgs')
-        if imgs_elem is not None:
-            for img in imgs_elem.findall('img'):
-                img_url = img.text.strip() if img.text else ''
-                is_main = img.get('main', '') == '1'
-                if img_url:
-                    images.append(ImageRaw(url=img_url, is_main=is_main))
+        images = _parse_images(imgs_elem)
 
         # Attributes
         attrs_elem = elem.find('attrs')

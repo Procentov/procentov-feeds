@@ -52,9 +52,7 @@ def _collect_parametric_attrs(
 
     for attr in first_offer.attributes:
         if attr.name_pl not in VARIANT_ATTR_WHITELIST:
-            # Preloz nazev a hodnotu
             name_cz = translate_attribute_name(attr.name_pl, slovnik, kategorie_context)
-            # Hodnota: vezmi prvni hodnotu z values_pl
             value_pl = attr.values_pl[0] if attr.values_pl else ""
             value_cz = translate_attribute_value(value_pl, slovnik)
 
@@ -76,7 +74,6 @@ def _build_variant(
     kategorie_context: str
 ) -> Variant:
     """Vytvori Variant objekt z ParsedOffer."""
-    # Konverze ceny PLN → CZK
     price_result = convert_pln_to_czk(offer.price_pln, offer.id, overrides)
     price_czk = PriceCZK(
         value=price_result.value,
@@ -85,22 +82,16 @@ def _build_variant(
         override_applied=price_result.override_applied
     )
 
-    # Image link (prvni obrazek, pokud existuje)
-    # POZOR: image_link je MIN field, takze musi byt neprazdny
-    # Pokud offer nema obrazek, pouzijeme placeholder
     if offer.images and offer.images[0].url:
         image_link = offer.images[0].url
     else:
-        # Fallback: placeholder (validator to chytne jako blocking pokud je prazdny)
         image_link = "https://placeholder.com/missing-image.jpg"
 
-    # Additional images
     additional_images = [
         Image(url=img.url, is_main=img.is_main)
-        for img in offer.images[1:]  # skip prvni (uz je v image_link)
+        for img in offer.images[1:]
     ]
 
-    # Variantni atributy
     variant_attrs = []
     for attr in offer.attributes:
         if attr.name_pl in VARIANT_ATTR_WHITELIST:
@@ -134,51 +125,35 @@ def merge_variants(
     slovnik_path: str,
     overrides: dict[str, OverrideRow]
 ) -> List[Product]:
-    """Slouceni variant na master produkty.
-
-    Args:
-        parsed_products: Vystup z parser_atos.parse()
-        slovnik_path: Cesta ke slovniku
-        overrides: dict overridu z pricing.load_overrides()
-
-    Returns:
-        List[Product] s pydantic schema
-    """
+    """Slouceni variant na master produkty."""
     slovnik = load_slovnik(slovnik_path)
     products = []
 
     for parsed in parsed_products:
-        # Kategorialni kontext pro per-kategorii override
         kategorie_context = parsed.cat_path_pl[0] if parsed.cat_path_pl else None
 
-        # Preloz kategorii
         category_path_cz = [
             translate_category_segment(seg, slovnik)
             for seg in parsed.cat_path_pl
         ]
 
-        # Parametricke atributy (spolecne)
         attrs_cz = _collect_parametric_attrs(parsed.offers, slovnik, kategorie_context)
 
-        # Vytvor varianty
         variants = [
             _build_variant(offer, overrides, slovnik, kategorie_context)
             for offer in parsed.offers
         ]
 
-        # Master cena = nejnizsi z variant
         if not variants:
-            continue  # skip produkty bez variant
+            continue
 
         min_variant = min(variants, key=lambda v: v.price_czk.value)
         master_price_czk = min_variant.price_czk
 
-        # Master image_link = prvni varianta s main=1, fallback prvni varianta
         master_image_link = ""
         for v in variants:
             if v.image_link:
                 master_image_link = v.image_link
-                # Check jestli ma main=1 (v additional_image_links)
                 for img in v.additional_image_links:
                     if img.is_main:
                         master_image_link = img.url
@@ -186,26 +161,23 @@ def merge_variants(
                 if master_image_link:
                     break
 
-        # Master availability = in_stock pokud aspon 1 varianta in_stock
         master_availability = "out_of_stock"
         for v in variants:
             if v.availability == "in_stock":
                 master_availability = "in_stock"
                 break
-        # Pokud zadna neni in_stock, vezmi availability z prvni varianty
         if master_availability == "out_of_stock" and variants:
             master_availability = variants[0].availability
 
-        # Master title, description (preloz z prvniho offeru)
         first_offer = parsed.offers[0]
         title_cz = translate_category_segment(parsed.item_group_key, slovnik)
-        description_cz = translate_description(first_offer.desc_pl, title_cz)
 
-        # Master ID = item_group_id = item_group_key
+        # product_id = item_group_key (napr. "FOTEL MILO")
+        # Předáváme product_id do translate_description — DESCRIPTIONS_CZ používá PL klíče
         product_id = parsed.item_group_key
         item_group_id = parsed.item_group_key
+        description_cz = translate_description(first_offer.desc_pl, product_id)
 
-        # attrs_raw (audit)
         attrs_raw = [
             {
                 'name_pl': attr.name_pl,
@@ -215,7 +187,6 @@ def merge_variants(
             for attr in first_offer.attributes
         ]
 
-        # Vytvor Product
         product = Product(
             id=product_id,
             item_group_id=item_group_id,
@@ -227,15 +198,13 @@ def merge_variants(
             availability=master_availability,
             variants=variants,
             attrs_cz=attrs_cz,
-            # OPT fields
-            brand=None,  # TODO: extract z attributes pokud existuje "Producent"
+            brand=None,
             gtin=None,
-            dimensions=None,  # TODO: extract z attributes pokud existuje
+            dimensions=None,
             weight_kg=None,
             color=None,
             material=None,
             additional_image_links=[],
-            # Audit fields
             title_pl=first_offer.name_pl,
             description_pl=first_offer.desc_pl,
             category_path_pl=parsed.cat_path_pl,

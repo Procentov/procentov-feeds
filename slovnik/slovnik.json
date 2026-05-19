@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "updated_at": "2026-05-12T17:25:21.659829+00:00",
+  "updated_at": "2026-05-19T11:38:41.704412+00:00",
   "namespaces": {
     "atributy": {
       "Kod_producenta": "Kód výrobce",
@@ -57,252 +57,252 @@
     "barvy_kody": {
       "BL06": {
         "pl": null,
-        "cz": "sedomodra",
+        "cz": "Šedá modrá",
         "material": "Velvet"
       },
       "BL14": {
         "pl": null,
-        "cz": "seda",
+        "cz": "Šedá",
         "material": "Velvet"
       },
       "BL75": {
         "pl": "olive",
-        "cz": "olivove zelena",
+        "cz": "Olivově zelená",
         "material": "Velvet"
       },
       "MG02": {
         "pl": "sliwka",
-        "cz": "svestkova",
+        "cz": "Švestková",
         "material": "Velvet"
       },
       "MG05": {
         "pl": null,
-        "cz": "hneda",
+        "cz": "Hnědá",
         "material": "Velvet"
       },
       "MG06": {
         "pl": null,
-        "cz": "svetle hneda",
+        "cz": "Světle hnědá",
         "material": "Velvet"
       },
       "MG09": {
         "pl": null,
-        "cz": "sedobezova",
+        "cz": "Šedobéžová",
         "material": "Velvet"
       },
       "MG15": {
         "pl": null,
-        "cz": "medova",
+        "cz": "Medová",
         "material": "Velvet"
       },
       "MG16": {
         "pl": null,
-        "cz": "tmave modra",
+        "cz": "Tmavě modrá",
         "material": "Velvet"
       },
       "MG17": {
         "pl": null,
-        "cz": "seda",
+        "cz": "Šedá",
         "material": "Velvet"
       },
       "MG19": {
         "pl": null,
-        "cz": "cerna",
+        "cz": "Černá",
         "material": "Velvet"
       },
       "MG20": {
         "pl": null,
-        "cz": "tyrkysova",
+        "cz": "Tyrkysová",
         "material": "Velvet"
       },
       "MG25": {
         "pl": null,
-        "cz": "lahvove zelena",
+        "cz": "Lahvově zelená",
         "material": "Velvet"
       },
       "MG31": {
         "pl": null,
-        "cz": "cervena",
+        "cz": "Červená",
         "material": "Velvet"
       },
       "MG33": {
         "pl": null,
-        "cz": "modra",
+        "cz": "Modrá",
         "material": "Velvet"
       },
       "MG39": {
         "pl": null,
-        "cz": "svetle seda",
+        "cz": "Světle šedá",
         "material": "Velvet"
       },
       "MG50": {
         "pl": null,
-        "cz": "kremova",
+        "cz": "Krémová",
         "material": "Velvet"
       },
       "MG55": {
         "pl": null,
-        "cz": "sedoruzova",
+        "cz": "Šedorůžová",
         "material": "Velvet"
       },
       "MG58": {
         "pl": null,
-        "cz": "indicka ruzova",
+        "cz": "Indická růžová",
         "material": "Velvet"
       },
       "1 MIKROFAZA": {
         "pl": "jasny bez",
-        "cz": "svetle bezova",
+        "cz": "Světle béžová",
         "material": "Mikrofaze"
       },
       "2 MIKROFAZA": {
         "pl": "bez",
-        "cz": "bezova",
+        "cz": "Béžová",
         "material": "Mikrofaze"
       },
       "3 MIKROFAZA": {
         "pl": "jasny braz",
-        "cz": "svetle hneda",
+        "cz": "Světle hnědá",
         "material": "Mikrofaze"
       },
       "4 MIKROFAZA": {
         "pl": "braz",
-        "cz": "hneda",
+        "cz": "Hnědá",
         "material": "Mikrofaze"
       },
       "5 MIKROFAZA": {
         "pl": "carrot",
-        "cz": "mrkvova",
+        "cz": "Mrkvová",
         "material": "Mikrofaze"
       },
       "6 MIKROFAZA": {
         "pl": "cegla",
-        "cz": "cihlova",
+        "cz": "Cihlová",
         "material": "Mikrofaze"
       },
       "8 MIKROFAZA": {
         "pl": "czerwony",
-        "cz": "cervena",
+        "cz": "Červená",
         "material": "Mikrofaze"
       },
       "9 MIKROFAZA": {
         "pl": "zielen lesna",
-        "cz": "lesni zelena",
+        "cz": "Lesní zelená",
         "material": "Mikrofaze"
       },
       "10 MIKROFAZA": {
         "pl": "rozowy",
-        "cz": "ruzova",
+        "cz": "Růžová",
         "material": "Mikrofaze"
       },
       "11 MIKROFAZA": {
         "pl": "fioletowy",
-        "cz": "fialova",
+        "cz": "Fialová",
         "material": "Mikrofaze"
       },
       "12 MIKROFAZA": {
         "pl": "zielony",
-        "cz": "zelena",
+        "cz": "Zelená",
         "material": "Mikrofaze"
       },
       "15 MIKROFAZA": {
         "pl": "chabrowy",
-        "cz": "chrpove modra",
+        "cz": "Chrpově modrá",
         "material": "Mikrofaze"
       },
       "16 MIKROFAZA": {
         "pl": "granatowy",
-        "cz": "tmave modra",
+        "cz": "Tmavě modrá",
         "material": "Mikrofaze"
       },
       "17 MIKROFAZA": {
         "pl": "szary",
-        "cz": "seda",
+        "cz": "Šedá",
         "material": "Mikrofaze"
       },
       "18 MIKROFAZA": {
         "pl": "czarny",
-        "cz": "cerna",
+        "cz": "Černá",
         "material": "Mikrofaze"
       },
       "1D": {
         "pl": "czarny",
-        "cz": "cerna",
+        "cz": "Černá",
         "material": "Eko-kuze"
       },
       "2D": {
         "pl": "braz",
-        "cz": "hneda",
+        "cz": "Hnědá",
         "material": "Eko-kuze"
       },
       "3D": {
         "pl": "jasny braz",
-        "cz": "svetle hneda",
+        "cz": "Světle hnědá",
         "material": "Eko-kuze"
       },
       "4D": {
         "pl": "granatowy",
-        "cz": "tmave modra",
+        "cz": "Tmavě modrá",
         "material": "Eko-kuze"
       },
       "5D": {
         "pl": "limonka",
-        "cz": "limetkova",
+        "cz": "Limetková",
         "material": "Eko-kuze"
       },
       "6D": {
         "pl": "zielony",
-        "cz": "zelena",
+        "cz": "Zelená",
         "material": "Eko-kuze"
       },
       "7D": {
         "pl": "seledynowy",
-        "cz": "celadonova",
+        "cz": "Celadonová",
         "material": "Eko-kuze"
       },
       "10D": {
         "pl": "biala",
-        "cz": "bila",
+        "cz": "Bílá",
         "material": "Eko-kuze"
       },
       "11D": {
         "pl": "buk",
-        "cz": "bukova",
+        "cz": "Buková",
         "material": "Eko-kuze"
       },
       "14D": {
         "pl": "olcha",
-        "cz": "olsova",
+        "cz": "Olšová",
         "material": "Eko-kuze"
       },
       "15D": {
         "pl": "czerwony",
-        "cz": "cervena",
+        "cz": "Červená",
         "material": "Eko-kuze"
       },
       "18D": {
         "pl": "wanilia",
-        "cz": "vanilkova",
+        "cz": "Vanilková",
         "material": "Eko-kuze"
       },
       "19D": {
         "pl": "venge",
-        "cz": "wenge",
+        "cz": "Wenge",
         "material": "Eko-kuze"
       },
       "20D": {
         "pl": "pomaranczowy",
-        "cz": "oranzova",
+        "cz": "Oranžová",
         "material": "Eko-kuze"
       },
       "22D": {
         "pl": "szary",
-        "cz": "seda",
+        "cz": "Šedá",
         "material": "Eko-kuze"
       },
       "23D": {
         "pl": "szary",
-        "cz": "seda",
+        "cz": "Šedá",
         "material": "Eko-kuze"
       },
       "BRINGHTON 2": {
@@ -312,7 +312,7 @@
       },
       "SNIKERS 1": {
         "pl": "Snikers 1 szary",
-        "cz": "Snikers 1 seda",
+        "cz": "Snikers 1 šedá",
         "material": "Tkanina"
       },
       "TRIP 2": {
@@ -325,212 +325,263 @@
   "per_kategorii_override": {},
   "audit": {
     "BL06": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "BL14": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "BL75": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG02": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG05": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG06": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG09": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG15": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG16": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG17": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG19": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG20": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG25": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG31": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG33": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG39": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG50": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG55": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "MG58": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "1 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "2 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "3 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "4 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "5 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "6 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "8 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "9 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "10 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "11 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "12 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "15 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "16 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "17 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "18 MIKROFAZA": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "1D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "2D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "3D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "4D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "5D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "6D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "7D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "10D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "11D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "14D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "15D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "18D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "19D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "20D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "22D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "23D": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "BRINGHTON 2": {
       "_source": "seed_utuli",
       "_updated_at": "2026-05-12T11:26:14.246313+00:00"
     },
     "SNIKERS 1": {
-      "_source": "seed_utuli",
-      "_updated_at": "2026-05-12T11:26:14.246313+00:00"
+      "_source": "review",
+      "_reviewed_by": "mirek",
+      "_updated_at": "2026-05-19T11:38:41.704412+00:00"
     },
     "TRIP 2": {
       "_source": "seed_utuli",

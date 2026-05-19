@@ -1,22 +1,7 @@
 {
-  "timestamp": "2026-05-12T17:43:41.053233Z",
-  "verdict": "BLOCKED",
-  "blocking_errors": [
-    {
-      "rule": "BLOCK-9",
-      "product_id": "FOTEL MILO",
-      "field": "description_cz",
-      "value": "Fotel Milo noga 15 buk Mikrofaza 1 jasny beż\r\nMięk",
-      "detail": "Polske diakritiky detekovany v description_cz"
-    },
-    {
-      "rule": "BLOCK-9",
-      "product_id": "SOFA MILO",
-      "field": "description_cz",
-      "value": "Sofa Milo BL75 zielona oliwka nogi 15 venge\r\nMiękk",
-      "detail": "Polske diakritiky detekovany v description_cz"
-    }
-  ],
+  "timestamp": "2026-05-12T17:44:16.876338Z",
+  "verdict": "PASS",
+  "blocking_errors": [],
   "warnings": [
     {
       "rule": "WARN-1",

@@ -1,4 +1,4 @@
-﻿.venv/
+.venv/
 __pycache__/
 *.pyc
 .DS_Store
@@ -12,3 +12,8 @@ benchmark_*.py
 tree_*.py
 check_*.py
 run_*.ps1
+
+# Pipeline výstupy a stažený zdrojový feed
+out/
+!out/.gitkeep
+*.xml.tmp

@@ -1,0 +1,81 @@
+name: Daily ATOS → Procentov feed
+
+# Cron běží v UTC. 04:00 UTC = 06:00 letní čas Praha / 05:00 zimní.
+# Manuální spuštění přes "Run workflow" v GitHubu kdykoliv.
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: daily-feed
+  cancel-in-progress: false
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      HEALTHCHECKS_UUID: ${{ secrets.HEALTHCHECKS_UUID }}
+      PYTHONIOENCODING: utf-8
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Healthchecks.io — start
+        if: env.HEALTHCHECKS_UUID != ''
+        run: curl -fsS -m 10 --retry 3 "https://hc-ping.com/${HEALTHCHECKS_UUID}/start" || true
+
+      - name: Stáhnout ATOS feed
+        run: python download_atos.py --out out/atos_source_feed.xml
+
+      - name: Generovat polotovar
+        run: |
+          python -m polotovar.generate \
+            --supplier atos \
+            --category milo \
+            --xml out/atos_source_feed.xml
+
+      - name: Sestavit XML pro Shopyon
+        run: |
+          python -m procentov.socha_shopyon \
+            --polotovar out/polotovar_atos_milo.json \
+            --out out/atos_milo.xml
+
+      - name: Upload na Cloudflare R2
+        run: |
+          python -m hosting.upload_r2 \
+            --file out/atos_milo.xml \
+            --key atos_milo.xml
+
+      - name: Upload artefaktů (debug)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: feed-output-${{ github.run_id }}
+          path: |
+            out/atos_milo.xml
+            out/polotovar_atos_milo.json
+            out/validation_errors.json
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Healthchecks.io — fail
+        if: failure() && env.HEALTHCHECKS_UUID != ''
+        run: curl -fsS -m 10 --retry 3 "https://hc-ping.com/${HEALTHCHECKS_UUID}/fail" || true
